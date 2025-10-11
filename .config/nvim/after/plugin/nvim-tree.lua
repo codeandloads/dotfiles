@@ -4,8 +4,8 @@ tree.setup({
   renderer = {
     icons = {
       show = {
-        file = true,
-        folder = true,
+        file = false,
+        folder = false,
         folder_arrow = true,
         git = true
       }

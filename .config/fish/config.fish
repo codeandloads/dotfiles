@@ -17,6 +17,7 @@ set -gx PATH $HOME/.local/share/nvim/mason/bin $PATH
 set -gx PATH $HOME/nodejs_globals/bin $PATH
 set -gx PATH $HOME/Softwares/jdk-17/bin $PATH
 set -gx PATH $HOME/.cargo/bin $PATH
+set -gx PATH $HOME/go/bin $PATH
 set -gx PATH /usr/local/texlive/2023/bin/x86_64-linux $PATH
 set -gx CPLUS_INCLUDE_PATH /usr/include/c++/11 $CPLUS_INCLUDE_PATH
 set -gx CPLUS_INCLUDE_PATH /usr/include/x86_64-linux-gnu/c++/11/32 $CPLUS_INCLUDE_PATH

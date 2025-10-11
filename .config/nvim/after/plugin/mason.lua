@@ -20,13 +20,11 @@ mason.setup({
 lspconfig.setup({
 	ensure_installed = {
 		"clangd",
-		"tailwindcss",
-		"tsserver",
+		"ts_ls",
 		"html",
 		"bashls",
 		"dockerls",
 		"docker_compose_language_service",
-		"angularls",
 		"cssls",
 		"emmet_ls",
 		"eslint",

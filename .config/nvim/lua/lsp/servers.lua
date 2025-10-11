@@ -60,27 +60,15 @@ lspconfig["pyright"].setup({
   root_dir = cwd,
 })
 
-lspconfig["tsserver"].setup({
+lspconfig["gopls"].setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+  root_dir = cwd,
+})
+
+lspconfig["ts_ls"].setup({
   filetypes = { "typescript", "typescriptreact" },
   on_attach = on_attach,
-  flags = lsp_flags,
-  root_dir = cwd,
-})
-
--- svelte
-lspconfig["svelte"].setup({
-  filetypes = { "svelte" },
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = lsp_flags,
-  root_dir = cwd,
-})
-
--- astro
-lspconfig["astro"].setup({
-  filetypes = { "astro" },
-  on_attach = on_attach,
-  capabilities = capabilities,
   flags = lsp_flags,
   root_dir = cwd,
 })
@@ -118,12 +106,20 @@ lspconfig["emmet_ls"].setup({
   root_dir = cwd,
 })
 
-lspconfig["html"].setup({
-  filetypes = { "html" },
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = cwd,
-})
+require'lspconfig'.html.setup{
+cmd = { "vscode-html-language-server", "--stdio" },
+filetypes = { "html" },
+init_options = {
+  configurationSection = { "html", "css", "javascript" },
+  embeddedLanguages = {
+    css = true,
+    javascript = true
+  }
+},
+root_dir = cwd,
+settings = {},
+}
+
 
 lspconfig["marksman"].setup({
   on_attach = on_attach,
@@ -142,12 +138,12 @@ lspconfig["cssls"].setup({
 })
 
 -- configure tailwindcss server
-lspconfig["tailwindcss"].setup({
-  filetypes = { "html", "svelte", "astro", "typescriptreact" },
-  root_dir = util.root_pattern("package.json", ".git"),
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+-- lspconfig["tailwindcss"].setup({
+--   filetypes = { "html", "svelte", "astro", "typescriptreact" },
+--   root_dir = util.root_pattern("package.json", ".git"),
+--   capabilities = capabilities,
+--   on_attach = on_attach,
+-- })
 
 -- configure bashls server
 lspconfig["bashls"].setup({

@@ -5,7 +5,7 @@
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 (setq user-full-name "Aniket Kharel"
-      user-mail-address "aniketkhareldev@gmail.com")
+      user-mail-address "aniketlearns@outlook.com.au")
 
 (setq global_font "CaskaydiaCove Nerd Font")
 (setq global_font_size 15)
@@ -107,6 +107,14 @@
 
   ;; Save Org buffers after refiling!
   (advice-add 'org-refile :after 'org-save-all-org-buffers)
+
+  ;; evil-escape
+  (after! evil
+    (setq evil-escape-key-sequence "jk"
+          evil-escape-delay 0.2) ;; adjust this delay to your preference (in seconds)
+
+    (evil-escape-mode 1))
+
 
   (setq org-tag-alist
         '((:startgroup)

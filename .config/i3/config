@@ -630,7 +630,7 @@ bar {
         # tray_output primary
         binding_mode_indicator yes
         # output HDMI-0
-        position bottom
+        position top
         strip_workspace_numbers no
         # === solarized dark theme
         colors {

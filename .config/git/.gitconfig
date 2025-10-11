@@ -1,0 +1,19 @@
+[user]
+  name = aniketkharel
+	email = aniketlearns@outlook.com.au
+	signingkey = ~/.ssh/id_rsa
+[init]
+  defaultBranch = master
+[gpg]
+    format = ssh
+[commit]
+	gpgsign = true
+	signingkey = ~/.ssh/id_rsa.pub
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[includeIf "gitdir:~/Projects/work/"]
+  path = ~/.gitconfig-work

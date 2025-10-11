@@ -1,0 +1,16 @@
+[user]
+  name = aniket007
+	email = aniketk@cygen.au
+	signingkey = ~/.ssh/id_ed25519_work
+[init]
+  defaultBranch = master
+[gpg]
+    format = ssh
+[commit]
+	gpgsign = true
+	signingkey = ~/.ssh/id_ed25519_work.pub
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

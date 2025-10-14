@@ -45,7 +45,8 @@ local plugins = {
   "christoomey/vim-tmux-navigator",
   "neovim/nvim-lspconfig",
   "glepnir/lspsaga.nvim",
-  "simrat39/rust-tools.nvim",
+  -- not rusting right now
+  -- "simrat39/rust-tools.nvim",
   "mfussenegger/nvim-dap",
   {
     "L3MON4D3/LuaSnip",

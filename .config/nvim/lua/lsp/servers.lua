@@ -1,5 +1,4 @@
-local status, lspconfig = pcall(require, "lspconfig")
-local util = require("lspconfig/util")
+local status, lspconfig = pcall(require, vim.lsp.config)
 if not status then
   return
 end
@@ -28,7 +27,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "<space>f", function()
-    vim.lsp.buf.format({ async = true })
+    vim.lsp.buf.format { async = true }
   end, bufopts)
 
   vim.api.nvim_create_autocmd("CursorHold", {
@@ -54,26 +53,26 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-lspconfig["pyright"].setup({
+lspconfig["pyright"].setup {
   on_attach = on_attach,
   flags = lsp_flags,
   root_dir = cwd,
-})
+}
 
-lspconfig["gopls"].setup({
+lspconfig["gopls"].setup {
   on_attach = on_attach,
   flags = lsp_flags,
   root_dir = cwd,
-})
+}
 
-lspconfig["ts_ls"].setup({
+lspconfig["ts_ls"].setup {
   filetypes = { "typescript", "typescriptreact" },
   on_attach = on_attach,
   flags = lsp_flags,
   root_dir = cwd,
-})
+}
 
-lspconfig["lua_ls"].setup({
+lspconfig["lua_ls"].setup {
   on_attach = on_attach,
   flags = lsp_flags,
   root_dir = cwd,
@@ -85,9 +84,9 @@ lspconfig["lua_ls"].setup({
       },
     },
   },
-})
+}
 
-lspconfig["clangd"].setup({
+lspconfig["clangd"].setup {
   cmd = {
     "clangd",
     "--query-driver=/usr/bin/gcc",
@@ -97,45 +96,44 @@ lspconfig["clangd"].setup({
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = cwd,
-})
+}
 
-lspconfig["emmet_ls"].setup({
+lspconfig["emmet_ls"].setup {
   filetypes = { "html", "typescriptreact" },
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = cwd,
-})
-
-require'lspconfig'.html.setup{
-cmd = { "vscode-html-language-server", "--stdio" },
-filetypes = { "html" },
-init_options = {
-  configurationSection = { "html", "css", "javascript" },
-  embeddedLanguages = {
-    css = true,
-    javascript = true
-  }
-},
-root_dir = cwd,
-settings = {},
 }
 
+lspconfig["html"].setup {
+  cmd = { "vscode-html-language-server", "--stdio" },
+  filetypes = { "html" },
+  init_options = {
+    configurationSection = { "html", "css", "javascript" },
+    embeddedLanguages = {
+      css = true,
+      javascript = true,
+    },
+  },
+  root_dir = cwd,
+  settings = {},
+}
 
-lspconfig["marksman"].setup({
+lspconfig["marksman"].setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = cwd,
   cmd = { "marksman", "server" },
   filetypes = { "markdown" },
   single_file_support = true,
-})
+}
 
 -- configure css server
-lspconfig["cssls"].setup({
+lspconfig["cssls"].setup {
   filetypes = { "html", "css" },
   capabilities = capabilities,
   on_attach = on_attach,
-})
+}
 
 -- configure tailwindcss server
 -- lspconfig["tailwindcss"].setup({
@@ -146,36 +144,36 @@ lspconfig["cssls"].setup({
 -- })
 
 -- configure bashls server
-lspconfig["bashls"].setup({
+lspconfig["bashls"].setup {
   capabilities = capabilities,
   on_attach = on_attach,
-})
+}
 
 -- configure yamlls server
-lspconfig["yamlls"].setup({
+lspconfig["yamlls"].setup {
   capabilities = capabilities,
   on_attach = on_attach,
-})
+}
 
 -- configure jsonls server
-lspconfig["jsonls"].setup({
+lspconfig["jsonls"].setup {
   capabilities = capabilities,
   on_attach = on_attach,
-})
+}
 
 -- configure dotenv server
-lspconfig["dockerls"].setup({
+lspconfig["dockerls"].setup {
   capabilities = capabilities,
   on_attach = on_attach,
-})
+}
 
 -- rust analyzer
-lspconfig["rust_analyzer"].setup({
+lspconfig["rust_analyzer"].setup {
   root_dir = cwd,
   cmd = { "rust-analyzer" },
   capabilities = capabilities,
   on_attach = on_attach,
-})
+}
 
 -- local function lsp_highlight_document(client)
 -- 	-- Set autocommands conditional on server_capabilities
@@ -201,7 +199,7 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-vim.diagnostic.config({
+vim.diagnostic.config {
   update_in_insert = true,
   underline = true,
   severity_sort = true,
@@ -213,4 +211,4 @@ vim.diagnostic.config({
     header = "",
     prefix = "",
   },
-})
+}
